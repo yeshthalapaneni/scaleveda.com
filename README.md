@@ -1,87 +1,84 @@
-# ScaleVeda AI & Analytics
+# ScaleVeda website
 
-**Simplifying AI and analytics to drive measurable business growth.**
+A production-ready Next.js marketing site for **ScaleVeda**, a data platform consulting company. The site presents ScaleVeda as a premium, practical partner for organizing messy data, building scalable data platforms, and integrating analytics, ML, and AI into business workflows.
 
-Welcome to ScaleVeda. ScaleVeda is an AI and analytics services provider that helps organizations turn data into practical outcomes.
+## What changed
 
-## About Us
+- Replaced the old static HTML/CSS site with a deployable Next.js App Router application.
+- Repositioned the content around data platform consulting instead of generic AI/automation messaging.
+- Added a responsive, accessible, monochrome-leaning visual system with warm cream backgrounds, strong typography, and custom SVG logo assets.
+- Added a working contact form backed by a server-side API route and Resend email delivery.
+- Added client-side and server-side validation, a honeypot field, basic in-memory rate limiting, success/error states, and environment-based configuration.
+- Added SEO metadata, Open Graph metadata, favicon, web manifest, and deployment documentation.
 
-ScaleVeda AI & Analytics is a service-based company focused on helping startups, mid-sized businesses, and enterprises scale faster through Artificial Intelligence and data analytics. We simplify complex AI implementations and build data foundations that support smarter, faster business decisions.
+## Tech stack
 
-We combine **AI + Data + Business Context** to deliver real impact—not just technical outputs.
+- [Next.js](https://nextjs.org/) App Router
+- React
+- TypeScript
+- Resend for transactional email
+- Plain CSS for the design system
 
-> **Core Philosophy:** *"AI should simplify, and data should solve real business problems."*
+## Getting started
 
-## Services
+Install dependencies:
 
-### 1) Data Engineering
-- ETL/ELT pipeline design and implementation
-- Data warehousing and lakehouse architecture
-- Real-time data streaming and event-driven pipelines
-- Data quality, governance, and observability
+```bash
+npm install
+```
 
-### 2) AI & Machine Learning
-- Predictive modeling for business forecasting
-- Natural Language Processing (NLP) solutions
-- Intelligent workflow automation
-- Model deployment, monitoring, and optimization
+Copy the example environment file:
 
-### 3) Business Intelligence
-- Executive dashboards and KPI tracking
-- Automated reporting frameworks
-- Self-service analytics enablement
-- Actionable insights for strategic planning
+```bash
+cp .env.example .env.local
+```
 
-### 4) Data Strategy & Consulting
-- AI and analytics maturity assessments
-- Data roadmap and architecture planning
-- Use-case prioritization and ROI modeling
-- Operating model and team enablement
+Start the development server:
 
-## Value Proposition
+```bash
+npm run dev
+```
 
-ScaleVeda helps businesses scale faster by aligning AI and analytics initiatives with business goals.
+Open <http://localhost:3000>.
 
-- **Faster ROI:** Prioritize high-impact use cases that deliver measurable value.
-- **Automation at Scale:** Reduce manual work with intelligent, reliable systems.
-- **Better Decisions:** Enable leaders with trusted, real-time insights.
-- **Execution Confidence:** Move from strategy to implementation with a modern, proven approach.
+## Contact form environment variables
 
-## Tech Stack
+The contact form posts to `app/api/contact/route.ts` and sends email through Resend. Set these variables locally in `.env.local` and in Vercel project settings.
 
-Our solutions are built using modern, production-ready technologies:
+| Variable | Required | Description | Where to get it |
+| --- | --- | --- | --- |
+| `RESEND_API_KEY` | Yes | API key used by the server route to send email. | Create one in the Resend dashboard under API Keys. |
+| `CONTACT_FROM_EMAIL` | Yes | Verified sender used by Resend, for example `ScaleVeda <hello@your-domain.com>`. | Configure and verify a sending domain or sender in Resend. |
+| `CONTACT_TO_EMAIL` | Yes | Recipient for inquiries. Set this to `yeshthalapaneni@gmail.com`. | Provided ScaleVeda contact inbox. |
+| `NEXT_PUBLIC_SITE_URL` | No | Canonical URL used by metadata and Open Graph tags. | Use the production URL, for example `https://scaleveda.com`. |
 
-- **Languages & Processing:** Python, SQL, PySpark
-- **Data Platforms:** Databricks, Snowflake
-- **Orchestration & Transformation:** Airflow, dbt
-- **Streaming & Messaging:** Kafka
-- **Cloud Ecosystem:** AWS, Azure, GCP
+No secrets are committed to the repository. `.env.example` documents expected values only.
 
-## Use Cases
+## Build and production run
 
-- Real-time analytics pipelines for operational visibility
-- Customer behavior prediction for personalization and retention
-- Revenue optimization through pricing and demand insights
-- Fraud detection and anomaly monitoring in transactional systems
+Create a production build:
 
-## Why Choose Us
+```bash
+npm run build
+```
 
-- Deep expertise in AI, analytics, and data engineering
-- Scalable architectures built for long-term growth
-- Cost-efficient delivery focused on business outcomes
-- Modern tech stack aligned with current industry standards
-- Collaborative, consulting-led approach from discovery to deployment
+Run the production server locally:
 
-## Getting Started
+```bash
+npm run start
+```
 
-Ready to collaborate with ScaleVeda AI & Analytics?
+## Deploying to Vercel
 
-1. Share your business goals and current data/AI challenges.
-2. We assess opportunities and propose a tailored roadmap.
-3. Align on scope, milestones, and success metrics.
-4. Launch implementation with transparent delivery and measurable outcomes.
+1. Push this repository to GitHub, GitLab, or Bitbucket.
+2. Import the project in Vercel.
+3. Select the Next.js framework preset if Vercel does not detect it automatically.
+4. Add the environment variables listed above in **Project Settings → Environment Variables**.
+5. Deploy.
+6. After the first deployment, submit the contact form with a real message to confirm Resend delivery to `yeshthalapaneni@gmail.com`.
 
-## Contact
+## Notes and assumptions
 
-- **Email:** hello@scaleveda.com *(placeholder)*
-- **Website:** https://www.scaleveda.com *(placeholder)*
+- The attached logo files were represented in the codebase as lightweight SVG assets under `public/`, including a mark-based SVG favicon.
+- The Resend sender must be a verified address or domain before production emails can be delivered reliably.
+- The API route includes simple in-memory rate limiting. For very high traffic or multi-region deployments, replace it with durable rate limiting such as Vercel KV, Upstash, or another shared store.

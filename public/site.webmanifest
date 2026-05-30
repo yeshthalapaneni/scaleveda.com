@@ -1,0 +1,10 @@
+{
+  "name": "ScaleVeda",
+  "short_name": "scaleveda",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "theme_color": "#F7F6F1",
+  "background_color": "#F7F6F1",
+  "display": "standalone"
+}
