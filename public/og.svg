@@ -1,0 +1,7 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F7F6F1"/>
+  <rect x="70" y="70" width="1060" height="490" rx="36" fill="#0D0D0C"/>
+  <image href="/scaleveda-logo-light.svg" x="120" y="110" width="470" height="116"/>
+  <text x="120" y="340" fill="#F7F6F1" font-family="Inter, Arial, Helvetica, sans-serif" font-size="68" font-weight="750" letter-spacing="-3">Data platforms that scale cleanly.</text>
+  <text x="124" y="420" fill="#D8D4C7" font-family="Inter, Arial, Helvetica, sans-serif" font-size="30">Organize messy data. Build production platforms. Integrate ML and analytics.</text>
+</svg>
