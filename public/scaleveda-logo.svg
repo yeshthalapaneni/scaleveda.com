@@ -1,0 +1,11 @@
+<svg width="690" height="170" viewBox="0 0 690 170" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">scaleveda logo</title>
+  <desc id="desc">A rising data mark followed by the scaleveda wordmark.</desc>
+  <g stroke="#0D0D0C" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M35 71H78C100 66 123 55 143 40"/>
+    <path d="M35 102H104"/>
+    <path d="M35 132H122"/>
+  </g>
+  <circle cx="145" cy="38" r="9" fill="#0D0D0C"/>
+  <text x="185" y="112" fill="#0D0D0C" font-family="Inter, Arial, Helvetica, sans-serif" font-size="76" font-weight="800" letter-spacing="-5">scaleveda</text>
+</svg>
