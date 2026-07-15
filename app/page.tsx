@@ -1,221 +1,178 @@
-import Image from "next/image";
-import { ContactForm } from "./components/ContactForm";
+"use client";
 
-const email = "yeshthalapaneni@gmail.com";
-const address = "8213 Amos Hunter Way, Ellicott City, Maryland";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Reveal } from "./components/Reveal";
 
-const services = [
+const pillars = [
   {
-    eyebrow: "01",
-    title: "Organize",
+    number: "01",
+    title: "Diagnose",
     description:
-      "We audit the systems you already have, clean the definitions that teams depend on, and design models, ownership, governance, and quality checks that make data trustworthy.",
-    points: ["Source-system assessment", "Data modeling and metric definitions", "Quality controls and governance"],
+      "We start inside your workflow, not a demo. We find the specific, repeatable decision or task worth automating, and the data it actually depends on.",
   },
   {
-    eyebrow: "02",
+    number: "02",
     title: "Build",
     description:
-      "We design and ship the platform layer: pipelines, warehouses or lakehouses, orchestration, observability, and deployment practices that hold up in production.",
-    points: ["Batch and streaming pipelines", "Warehouse and lakehouse architecture", "Production orchestration and monitoring"],
+      "We design and ship a purpose-built agent for that one job — grounded in your systems, with clear guardrails, evaluation, and a human override.",
   },
   {
-    eyebrow: "03",
-    title: "Integrate",
+    number: "03",
+    title: "Operate",
     description:
-      "We connect analytics, ML, and AI workflows to the platform so teams can use reliable data inside the decisions and products that matter most.",
-    points: ["Analytics-ready semantic layers", "ML feature and model integrations", "Decision workflows and enablement"],
+      "We monitor behavior in production, tune it against real outcomes, and hand over documentation your team can actually maintain.",
   },
 ];
 
-const process = [
-  ["Discover", "Clarify the business goals, data sources, pain points, and operating constraints before recommending technology."],
-  ["Design", "Translate the findings into a pragmatic roadmap, architecture, and delivery plan that teams can understand."],
-  ["Build", "Implement the highest-value platform pieces with clean documentation, testing, monitoring, and handoff."],
-  ["Scale", "Strengthen governance, reliability, and adoption so the platform keeps improving as the company grows."],
-];
-
-const outcomes = [
-  "A trusted source of truth for core metrics and operating data.",
-  "Data pipelines and platforms that are observable, documented, and maintainable.",
-  "Analytics and ML initiatives grounded in clean, production-ready data.",
-  "A delivery partner who can work with founders, operators, analysts, and engineers.",
-];
-
-const faqs = [
-  {
-    question: "What kinds of companies do you work with?",
-    answer:
-      "We work with growing companies that have outgrown spreadsheets, one-off dashboards, or fragile data scripts and need a more reliable data foundation.",
-  },
-  {
-    question: "Do you only advise, or do you implement?",
-    answer:
-      "Both. We can define the roadmap and architecture, then build the pipelines, data models, orchestration, and integration layers needed to put the platform into production.",
-  },
-  {
-    question: "Which tools do you use?",
-    answer:
-      "We choose tools around the client’s environment and constraints. Common patterns include modern warehouses or lakehouses, orchestration, transformation frameworks, BI layers, and ML services.",
-  },
-  {
-    question: "Can you help with AI initiatives?",
-    answer:
-      "Yes, but we start with the data foundation. We help connect ML and AI models to governed, reliable data so those systems can be used safely in real workflows.",
-  },
+const proof = [
+  { value: "1", label: "problem per engagement — no platform overreach" },
+  { value: "14d", label: "to a working prototype on your own data" },
+  { value: "100%", label: "of agents shipped with human-in-the-loop controls" },
+  { value: "0", label: "vendor lock-in — you own the code and the model choice" },
 ];
 
 export default function Home() {
   return (
-    <>
-      <header className="site-header">
-        <a className="logo-link" href="#top" aria-label="scaleveda home">
-          <Image src="/scaleveda-logo.svg" alt="scaleveda" width={690} height={170} priority />
-        </a>
-        <nav className="nav" aria-label="Primary navigation">
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact" className="nav-cta">Book a call</a>
-        </nav>
-      </header>
+    <main className="overflow-x-clip">
+      <section className="mx-auto flex min-h-[calc(100svh-4.5rem)] w-[min(1120px,calc(100%-2rem))] flex-col justify-center py-16">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-accent dark:text-dark-accent"
+        >
+          Data &amp; AI company
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="max-w-[16ch] text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+        >
+          Custom AI agents, built for one job at a time.
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mt-6 max-w-[42rem] text-base leading-relaxed text-ink-soft dark:text-dark-muted sm:text-lg"
+        >
+          Off-the-shelf AI tools solve generic problems. Yours aren&apos;t generic. ScaleVeda designs,
+          builds, and operates AI agents around the specific workflows, data, and constraints of your
+          business — not a chatbot bolted onto your product.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="mt-9 flex flex-wrap gap-3"
+        >
+          <Link
+            href="/contact"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-6 font-semibold text-cream shadow-[0_14px_34px_rgba(23,22,15,0.18)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(23,22,15,0.24)] dark:bg-dark-text dark:text-dark-bg"
+          >
+            Start a conversation
+          </Link>
+          <Link
+            href="/services"
+            className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink/20 px-6 font-semibold text-ink transition hover:-translate-y-0.5 hover:border-ink/40 dark:border-dark-text/20 dark:text-dark-text dark:hover:border-dark-text/40"
+          >
+            See how we build
+          </Link>
+        </motion.div>
 
-      <main id="top">
-        <section className="hero section-shell" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow">Data platform consulting for growing companies</p>
-            <h1 id="hero-title">From messy data to production-grade platforms.</h1>
-            <p className="hero-lede">
-              ScaleVeda helps teams organize scattered data, build scalable platform foundations,
-              and integrate analytics, ML, and AI into the business decisions that matter.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-dark" href="#contact">Book a call</a>
-              <a className="button button-light" href="#services">Explore services</a>
-            </div>
-          </div>
-          <div className="hero-panel" aria-label="ScaleVeda platform outcomes">
-            <div className="panel-topline">
-              <span>Clean foundation</span>
-              <span>Production ready</span>
-            </div>
-            <div className="data-card primary-card">
-              <span className="card-label">Current state</span>
-              <strong>Messy tools, duplicate metrics, fragile pipelines</strong>
-            </div>
-            <div className="platform-arrow" aria-hidden="true">→</div>
-            <div className="data-card">
-              <span className="card-label">ScaleVeda platform</span>
-              <strong>Governed models, reliable pipelines, integrated intelligence</strong>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-shell split-intro" aria-label="ScaleVeda positioning">
-          <p className="kicker">What changes when data scales cleanly</p>
-          <h2>Teams stop debating the numbers and start using them.</h2>
-          <p>
-            Growth adds tools, customers, processes, and complexity. Without a strong data platform,
-            decision-making slows down. We bring structure to that complexity, then build the systems
-            that make reliable data available across the company.
-          </p>
-        </section>
-
-        <section className="section-shell" id="services" aria-labelledby="services-title">
-          <div className="section-heading">
-            <p className="eyebrow">Services</p>
-            <h2 id="services-title">Three connected pillars for a stronger data foundation.</h2>
-          </div>
-          <div className="service-grid">
-            {services.map((service) => (
-              <article className="service-card" key={service.title}>
-                <span className="service-number">{service.eyebrow}</span>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <ul>
-                  {service.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="process-section" id="process" aria-labelledby="process-title">
-          <div className="section-shell">
-            <div className="section-heading inverted">
-              <p className="eyebrow">How we work</p>
-              <h2 id="process-title">A practical path from discovery to scale.</h2>
-            </div>
-            <div className="process-grid">
-              {process.map(([title, description], index) => (
-                <article className="process-card" key={title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section-shell outcomes" aria-labelledby="outcomes-title">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-16 grid grid-cols-1 gap-6 border-t border-ink/10 pt-7 text-sm text-ink-soft dark:border-dark-text/10 dark:text-dark-muted sm:grid-cols-3"
+        >
           <div>
-            <p className="eyebrow">Why ScaleVeda</p>
-            <h2 id="outcomes-title">Senior data-platform judgment without unnecessary complexity.</h2>
+            <strong className="mb-1 block text-base font-semibold text-ink dark:text-dark-text">Built to fit</strong>
+            One agent, one workflow, your systems.
           </div>
-          <div className="outcome-list">
-            {outcomes.map((outcome) => (
-              <p key={outcome}>{outcome}</p>
-            ))}
-          </div>
-        </section>
-
-        <section className="section-shell faq" id="faq" aria-labelledby="faq-title">
-          <div className="section-heading">
-            <p className="eyebrow">FAQ</p>
-            <h2 id="faq-title">Common questions.</h2>
-          </div>
-          <div className="faq-list">
-            {faqs.map((faq) => (
-              <details key={faq.question}>
-                <summary>{faq.question}</summary>
-                <p>{faq.answer}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div className="section-shell contact-grid">
-            <div className="contact-copy">
-              <p className="eyebrow">Contact</p>
-              <h2 id="contact-title">Ready to clean up the data layer?</h2>
-              <p>
-                Tell us what is slowing your team down. We will respond with a practical next step,
-                whether that is an audit, architecture plan, or focused build engagement.
-              </p>
-              <div className="contact-details">
-                <a href={`mailto:${email}`}>{email}</a>
-                <span>{address}</span>
-              </div>
-            </div>
-            <ContactForm />
-          </div>
-        </section>
-      </main>
-
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <Image src="/scaleveda-logo-light.svg" alt="scaleveda" width={690} height={170} />
           <div>
-            <a href={`mailto:${email}`}>{email}</a>
-            <p>{address}</p>
-            <p>© {new Date().getFullYear()} ScaleVeda. All rights reserved.</p>
+            <strong className="mb-1 block text-base font-semibold text-ink dark:text-dark-text">Built to trust</strong>
+            Evaluated, monitored, and reversible.
           </div>
+          <div>
+            <strong className="mb-1 block text-base font-semibold text-ink dark:text-dark-text">Built to last</strong>
+            You own the code — no black box.
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="mx-auto w-[min(1120px,calc(100%-2rem))] pb-20 pt-8 sm:pb-28">
+        <Reveal className="mb-12 max-w-[46rem] sm:mb-16">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent dark:text-dark-accent">How we work</p>
+          <h2 className="text-2xl font-medium tracking-tight sm:text-3xl lg:text-4xl">
+            From a real workflow to a working agent.
+          </h2>
+        </Reveal>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {pillars.map((pillar, i) => (
+            <Reveal key={pillar.number} delay={i * 0.1} as="article" className="rounded-2xl border border-ink/10 bg-paper p-7 transition hover:-translate-y-1 hover:border-ink/25 dark:border-dark-text/10 dark:bg-dark-card dark:hover:border-dark-text/25">
+              <span className="mb-8 block text-xs font-bold tracking-[0.12em] text-accent dark:text-dark-accent">{pillar.number}</span>
+              <h3 className="mb-2 text-lg font-semibold">{pillar.title}</h3>
+              <p className="text-sm leading-relaxed text-ink-soft dark:text-dark-muted">{pillar.description}</p>
+            </Reveal>
+          ))}
         </div>
-      </footer>
-    </>
+
+        <Reveal delay={0.3}>
+          <Link href="/services" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink transition hover:text-accent dark:text-dark-text dark:hover:text-dark-accent">
+            See the full engagement model
+            <span aria-hidden="true">→</span>
+          </Link>
+        </Reveal>
+      </section>
+
+      <section className="border-y border-ink/10 bg-cream-deep/60 py-14 dark:border-dark-text/10 dark:bg-dark-surface sm:py-16">
+        <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
+          {proof.map((stat, i) => (
+            <Reveal key={stat.label} delay={i * 0.08} className="border-l border-ink/10 pl-5 first:border-l-0 first:pl-0 dark:border-dark-text/10 sm:border-t-0">
+              <strong className="mb-1 block text-3xl font-medium tracking-tight sm:text-4xl">{stat.value}</strong>
+              <span className="text-sm text-ink-soft dark:text-dark-muted">{stat.label}</span>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto grid w-[min(1120px,calc(100%-2rem))] grid-cols-1 gap-10 py-20 sm:py-28 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <Reveal>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent dark:text-dark-accent">Why not just use an off-the-shelf AI tool</p>
+          <h2 className="max-w-[13ch] text-2xl font-medium tracking-tight sm:text-3xl lg:text-4xl">
+            Generic AI answers generic questions.
+          </h2>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <p className="text-base leading-relaxed text-ink-soft dark:text-dark-muted sm:text-lg">
+            Your edge cases, your legacy systems, your judgment calls — a general-purpose assistant
+            doesn&apos;t know any of that. We treat each engagement as one well-scoped problem: understand
+            the workflow, ground the agent in your real data, and ship something your team actually
+            trusts enough to rely on. No platform to adopt, no seat licenses, no roadmap dictated by
+            someone else&apos;s product.
+          </p>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto w-[min(1120px,calc(100%-2rem))] pb-24 text-center sm:pb-32">
+        <Reveal className="mx-auto max-w-[36rem]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent dark:text-dark-accent">See it applied</p>
+          <h2 className="text-2xl font-medium tracking-tight sm:text-3xl lg:text-4xl">A few of the problems worth automating.</h2>
+          <p className="mt-4 text-base leading-relaxed text-ink-soft dark:text-dark-muted sm:text-lg">
+            Concrete examples of the kind of work we take on — the shape of the problem, not a sales pitch.
+          </p>
+          <Link
+            href="/work"
+            className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-6 font-semibold text-cream shadow-[0_14px_34px_rgba(23,22,15,0.18)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(23,22,15,0.24)] dark:bg-dark-text dark:text-dark-bg"
+          >
+            Explore example use cases
+          </Link>
+        </Reveal>
+      </section>
+    </main>
   );
 }

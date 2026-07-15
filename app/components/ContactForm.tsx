@@ -25,6 +25,9 @@ const initialValues: FormValues = {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const inputClasses =
+  "w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 text-ink outline-none transition focus:border-ink/40 dark:border-dark-text/15 dark:bg-dark-bg dark:text-dark-text dark:focus:border-dark-text/40 aria-[invalid=true]:border-red-500";
+
 export function ContactForm() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [status, setStatus] = useState<FormStatus>({ type: "idle", message: "" });
@@ -87,11 +90,16 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate>
-      <div className="field-grid">
-        <label>
+    <form
+      className="grid gap-4 rounded-2xl border border-ink/10 bg-paper p-6 shadow-[0_22px_70px_rgba(23,22,15,0.09)] dark:border-dark-text/10 dark:bg-dark-surface sm:p-8"
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <label className="grid gap-2 text-sm font-semibold">
           <span>Name</span>
           <input
+            className={inputClasses}
             name="name"
             autoComplete="name"
             value={values.name}
@@ -100,9 +108,10 @@ export function ContactForm() {
             aria-invalid={status.type === "error" && !values.name.trim()}
           />
         </label>
-        <label>
+        <label className="grid gap-2 text-sm font-semibold">
           <span>Email</span>
           <input
+            className={inputClasses}
             type="email"
             name="email"
             autoComplete="email"
@@ -114,9 +123,10 @@ export function ContactForm() {
         </label>
       </div>
 
-      <label>
-        <span>Company <em>(optional)</em></span>
+      <label className="grid gap-2 text-sm font-semibold">
+        <span>Company <em className="font-medium not-italic text-ink-soft dark:text-dark-muted">(optional)</em></span>
         <input
+          className={inputClasses}
           name="company"
           autoComplete="organization"
           value={values.company}
@@ -124,21 +134,22 @@ export function ContactForm() {
         />
       </label>
 
-      <label>
+      <label className="grid gap-2 text-sm font-semibold">
         <span>Message</span>
         <textarea
+          className={`${inputClasses} resize-y`}
           name="message"
           rows={6}
           value={values.message}
           onChange={(event) => updateField("message", event.target.value)}
           required
           minLength={20}
-          placeholder="Tell us where your data platform stands today and what you need to improve."
+          placeholder="Tell us about the workflow you want to automate and what's slow or error-prone about it today."
           aria-invalid={status.type === "error" && values.message.trim().length < 20}
         />
       </label>
 
-      <label className="honeypot" aria-hidden="true" tabIndex={-1}>
+      <label className="absolute left-[-10000px] h-px w-px overflow-hidden" aria-hidden="true" tabIndex={-1}>
         <span>Website</span>
         <input
           name="website"
@@ -150,12 +161,23 @@ export function ContactForm() {
       </label>
 
       {status.message ? (
-        <p className={`form-status ${status.type}`} role={status.type === "error" ? "alert" : "status"}>
+        <p
+          className={`rounded-xl px-4 py-3 text-sm font-semibold ${
+            status.type === "success"
+              ? "bg-green-600/10 text-green-700 dark:text-green-400"
+              : "bg-red-600/10 text-red-700 dark:text-red-400"
+          }`}
+          role={status.type === "error" ? "alert" : "status"}
+        >
           {status.message}
         </p>
       ) : null}
 
-      <button className="button button-dark" type="submit" disabled={isSubmitting}>
+      <button
+        className="inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-6 font-semibold text-cream transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 dark:bg-dark-text dark:text-dark-bg"
+        type="submit"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? "Sending…" : "Send inquiry"}
       </button>
     </form>

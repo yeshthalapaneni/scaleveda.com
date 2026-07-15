@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
     const { error } = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
-      replyTo: email,
+      reply_to: email,
       subject: `New ScaleVeda inquiry from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.55; color: #111111;">

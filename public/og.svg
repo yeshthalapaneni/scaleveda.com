@@ -1,7 +1,8 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#F7F6F1"/>
-  <rect x="70" y="70" width="1060" height="490" rx="36" fill="#0D0D0C"/>
+  <rect x="70" y="70" width="1060" height="490" rx="36" fill="#17160F"/>
   <image href="/scaleveda-logo-light.svg" x="120" y="110" width="470" height="116"/>
-  <text x="120" y="340" fill="#F7F6F1" font-family="Inter, Arial, Helvetica, sans-serif" font-size="68" font-weight="750" letter-spacing="-3">Data platforms that scale cleanly.</text>
-  <text x="124" y="420" fill="#D8D4C7" font-family="Inter, Arial, Helvetica, sans-serif" font-size="30">Organize messy data. Build production platforms. Integrate ML and analytics.</text>
+  <text x="120" y="340" fill="#F5F4EF" font-family="Inter, Arial, Helvetica, sans-serif" font-size="60" font-weight="650" letter-spacing="-2">Custom AI agents, built for</text>
+  <text x="120" y="405" fill="#F5F4EF" font-family="Inter, Arial, Helvetica, sans-serif" font-size="60" font-weight="650" letter-spacing="-2">one job at a time.</text>
+  <text x="124" y="465" fill="#B8B4A6" font-family="Inter, Arial, Helvetica, sans-serif" font-size="27">A data and AI company for unique business use cases.</text>
 </svg>

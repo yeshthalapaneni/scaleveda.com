@@ -1,27 +1,30 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { SiteHeader } from "./components/SiteHeader";
+import { SiteFooter } from "./components/SiteFooter";
+import { ThemeProvider } from "./components/ThemeProvider";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://scaleveda.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "ScaleVeda | Data Platform Consulting",
+  title: "ScaleVeda | Custom AI Agents for Business",
   description:
-    "ScaleVeda helps growing companies organize messy data, build scalable data platforms, and integrate analytics and ML into daily decisions.",
+    "ScaleVeda is a data and AI company that designs and builds custom AI agents for unique business use cases, on a data foundation solid enough to trust.",
   keywords: [
-    "data platform consulting",
+    "custom AI agents",
+    "AI agent development",
+    "data and AI company",
+    "business automation",
+    "applied AI",
     "data engineering",
-    "data governance",
-    "lakehouse",
-    "warehouse",
-    "ML integration",
     "ScaleVeda",
   ],
   openGraph: {
-    title: "ScaleVeda | Data Platform Consulting",
+    title: "ScaleVeda | Custom AI Agents for Business",
     description:
-      "From messy data to production-grade platforms for growing companies.",
+      "We design and build custom AI agents for the specific problems in your business — not generic AI features.",
     url: siteUrl,
     siteName: "ScaleVeda",
     type: "website",
@@ -30,15 +33,15 @@ export const metadata: Metadata = {
         url: "/og.svg",
         width: 1200,
         height: 630,
-        alt: "scaleveda data platform consulting",
+        alt: "scaleveda — custom AI agents for business",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ScaleVeda | Data Platform Consulting",
+    title: "ScaleVeda | Custom AI Agents for Business",
     description:
-      "Clean, scalable data foundations for companies that need to move faster.",
+      "Custom AI agents, built on a data foundation solid enough to trust.",
     images: ["/og.svg"],
   },
   icons: {
@@ -49,10 +52,20 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#f7f6f1",
+};
+
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
